@@ -1,23 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const blocks = [
+    {
+      id: 'b1',
+      block: 'yellow',
+    },
+    {
+      id: 'b2',
+      block: 'green',
+    },
+    {
+      id: 'b3',
+      block: 'color',
+    },
+    {
+      id: 'b4',
+      block: `${Math.random()}`,
+    },
+
+  
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {blocks.map((item) => {
+        if (item.block === 'color') {
+          item.block = 'lime';
+        }
+        if (+item.block > 0) {
+          item.block = 'red';
+        }
+        return (
+          <div
+            style={{
+              background: item.block,
+              width: '100px',
+              height: '100px',
+              border: '3px solid white',
+              gap: '10gap',
+            }}
+            key={item.id}
+          >
+            
+          </div>
+        );
+      })}
     </div>
   );
 }
